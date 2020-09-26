@@ -35,6 +35,9 @@ namespace WhoWantsToBeAMillionaire
 
         public Label previous_answer_label;
 
+        public bool used_fifty_fifty = false;
+
+
         
 
         public Form2()
@@ -239,10 +242,44 @@ namespace WhoWantsToBeAMillionaire
             }
         }
 
+
+
+
         private void next_question_Click(object sender, EventArgs e)
         {
             nextLevel();
             
     }
+
+        private void fifty_fiftybutton_Click(object sender, EventArgs e)
+        {
+            // we need to reduce the number of answers by half
+            if (!used_fifty_fifty)
+            {
+                //reduce the amount of options 
+
+                Label[] labels = { label_option_a, label_option_b, label_option_c, label_option_d };
+                int counter = 0;
+
+
+                foreach(Label current_label in labels)
+                {
+                    if(current_label.Text != answer_key[questions[current_level]].ToString())
+                    {
+                        
+
+                        counter += 1;
+                        current_label.Text = "######";
+                        used_fifty_fifty = true;
+                        fifty_fifty_button.Text = "";
+                        if (counter == 2) return;
+                        
+                    }
+                }
+                //set it to true and make the button , black or unsuable 
+            }
+           
+
+        }
     }
 }

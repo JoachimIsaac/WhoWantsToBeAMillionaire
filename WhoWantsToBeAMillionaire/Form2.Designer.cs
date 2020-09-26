@@ -37,6 +37,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.submit_answer_button = new System.Windows.Forms.Button();
             this.next_question = new System.Windows.Forms.Button();
+            this.fifty_fifty_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // header_label
@@ -128,12 +129,24 @@
             this.next_question.UseVisualStyleBackColor = true;
             this.next_question.Click += new System.EventHandler(this.next_question_Click);
             // 
+            // fifty_fifty_button
+            // 
+            this.fifty_fifty_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fifty_fifty_button.Location = new System.Drawing.Point(1164, 950);
+            this.fifty_fifty_button.Name = "fifty_fifty_button";
+            this.fifty_fifty_button.Size = new System.Drawing.Size(241, 179);
+            this.fifty_fifty_button.TabIndex = 14;
+            this.fifty_fifty_button.Text = "50 : 50";
+            this.fifty_fifty_button.UseVisualStyleBackColor = true;
+            this.fifty_fifty_button.Click += new System.EventHandler(this.fifty_fiftybutton_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1756, 1198);
+            this.Controls.Add(this.fifty_fifty_button);
             this.Controls.Add(this.next_question);
             this.Controls.Add(this.submit_answer_button);
             this.Controls.Add(this.textBox1);
@@ -163,5 +176,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button submit_answer_button;
         private System.Windows.Forms.Button next_question;
+        private System.Windows.Forms.Button fifty_fifty_button;
     }
 }
