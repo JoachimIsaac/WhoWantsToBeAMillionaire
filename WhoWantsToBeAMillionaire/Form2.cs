@@ -37,6 +37,8 @@ namespace WhoWantsToBeAMillionaire
 
         public bool used_fifty_fifty = false;
 
+        public bool submitted = false; 
+
 
         
 
@@ -108,6 +110,10 @@ namespace WhoWantsToBeAMillionaire
 
             header_label.Text = questions[index].ToString();
 
+            if (current_level + 1 == 1 || current_level + 1 == 5 || current_level + 1 == 10)
+            {
+                header_label.Text += "\n This is a safe Heaven this round!";
+            }
 
             label_option_a.Text = answers[index][question_arangements[0]];
             label_option_b.Text = answers[index][question_arangements[1]];
@@ -118,17 +124,66 @@ namespace WhoWantsToBeAMillionaire
         }
 
 
-        public void player_has_lost(bool outcome,int index,int score)
+
+        public void open_messagebox(string message,string title)
         {
-            Form3 frm3 = new Form3();
-            this.Hide();
-            frm3.load_game_state(outcome,index,score);
-            frm3.ShowDialog();
+            MessageBoxButtons buttons = MessageBoxButtons.AbortRetryIgnore;
+           if(MessageBox.Show(message, title, MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes){
+                Application.Exit();
+            }
+           
+
             
+        }
+
+
+        public void player_has_lost(bool gameOver,int index,int score)
+        {
+            //Form3 frm3 = new Form3();
+            //this.Hide();
+            //frm3.load_game_state(outcome,index,score);
+            ////frm3.ShowDialog();
+
+            string title = "Results";
+           
+
+
+            if (gameOver)
+            {
+                string message = "YOU LOSE!!!!!! Please play again!";
+
+                open_messagebox(message, title);
+            }
+            else if(!gameOver && index > 14)
+            {
+                string message = "YOU W0N A MILLION DOLLARS!!!, would you like to close the window?";
+                open_messagebox(message, title);
+            }
+            else if(!gameOver && index <= 14)
+            {
+              
+                string message = $"YOU WALK AWAY WITH {score} DOLLARS!!! , would you like to close the window?";
+                open_messagebox(message, title);
+            }
+
+            
+
+
+
+
+
+
+
+
+
+
+            
+
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            textBox1_TextChanged_1(sender,e);
             
             load_questions_and_answers();
 
@@ -156,7 +211,7 @@ namespace WhoWantsToBeAMillionaire
             Score = ScoreList[score_index];
             score_index += 1;
             load_buttons_and_labels(current_level);
-            textBox1.Text = "";
+            input_box.Text = "";
             previous_answer_label.BackColor = Color.White;
 
         }
@@ -211,30 +266,38 @@ namespace WhoWantsToBeAMillionaire
             
         }
 
+
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+            submit_answer_button.Enabled = input_box.Text == "" ? false : true;
+
+           
+        }
+
         //If there is no text in the textbox, button1 is not clickable.
         //If there is something in the textbox, button1 is clickable.
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            if (textBox1.Text == "")
-            {
-                submit_answer_button.Enabled = false;
-            }
-            else
-            {
-                submit_answer_button.Enabled = true;
-            }
-        }
+     
 
         private void submit_answer_button_Click(object sender, EventArgs e)
         {  
-            if (textBox1.Text.ToLower() == answer_key[questions[current_level]].ToString())//continue
+            if (input_box.Text.ToLower() == answer_key[questions[current_level]].ToString())//continue
             {
 
                 previous_answer_label = highlight_label();
 
                 header_label.Text = "You got the correct answer!";
+
+                submitted = true;
                 
             }
+           else if (current_level + 1 == 1 || current_level + 1 == 5 || current_level + 1 == 10)
+            {
+                previous_answer_label = highlight_label();
+                header_label.Text = "You survived due to your safe heaven!!!!";
+                submitted = true;
+            }
+
             else//you lose
             {
 
@@ -247,7 +310,12 @@ namespace WhoWantsToBeAMillionaire
 
         private void next_question_Click(object sender, EventArgs e)
         {
-            nextLevel();
+
+            if (submitted)
+            {
+                nextLevel();
+                submitted = false;
+            }
             
     }
 
@@ -276,10 +344,12 @@ namespace WhoWantsToBeAMillionaire
                         
                     }
                 }
-                //set it to true and make the button , black or unsuable 
+                
             }
            
 
         }
+
+        
     }
 }

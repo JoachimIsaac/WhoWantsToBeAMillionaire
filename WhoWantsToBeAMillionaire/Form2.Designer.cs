@@ -34,7 +34,7 @@
             this.label_option_c = new System.Windows.Forms.Label();
             this.label_option_a = new System.Windows.Forms.Label();
             this.label_option_d = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.input_box = new System.Windows.Forms.TextBox();
             this.submit_answer_button = new System.Windows.Forms.Button();
             this.next_question = new System.Windows.Forms.Button();
             this.fifty_fifty_button = new System.Windows.Forms.Button();
@@ -99,13 +99,14 @@
             this.label_option_d.TabIndex = 10;
             this.label_option_d.Text = "label_option_d";
             // 
-            // textBox1
+            // input_box
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(1088, 584);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(584, 49);
-            this.textBox1.TabIndex = 11;
+            this.input_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.input_box.Location = new System.Drawing.Point(1088, 584);
+            this.input_box.Name = "input_box";
+            this.input_box.Size = new System.Drawing.Size(584, 49);
+            this.input_box.TabIndex = 11;
+            this.input_box.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // submit_answer_button
             // 
@@ -149,7 +150,7 @@
             this.Controls.Add(this.fifty_fifty_button);
             this.Controls.Add(this.next_question);
             this.Controls.Add(this.submit_answer_button);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.input_box);
             this.Controls.Add(this.label_option_d);
             this.Controls.Add(this.label_option_a);
             this.Controls.Add(this.label_option_c);
@@ -173,7 +174,7 @@
         private System.Windows.Forms.Label label_option_c;
         private System.Windows.Forms.Label label_option_a;
         private System.Windows.Forms.Label label_option_d;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox input_box;
         private System.Windows.Forms.Button submit_answer_button;
         private System.Windows.Forms.Button next_question;
         private System.Windows.Forms.Button fifty_fifty_button;
