@@ -26,18 +26,22 @@ namespace WhoWantsToBeAMillionaire
             
         }
 
-        public void load_game_state(bool outcome)
+        public void load_game_state(bool outcome,int index,int amount = 0)
         {
             gameOver = outcome;
 
             if (gameOver)
             {
-                label1.Text = "YOU LOOSE!!!!!!";
+                label1.Text = "YOU LOSE!!!!!!";
                
             }
-            else
+            else if(!gameOver && index > 14)
             {
                 label1.Text = "YOU WIN A MILLION DOLLARS!!!";
+            }
+            else if(!gameOver && index <= 14)
+            {
+                label1.Text = $"YOU WALK AWAY WITH {amount} DOLLARS!!!";
             }
         }
 

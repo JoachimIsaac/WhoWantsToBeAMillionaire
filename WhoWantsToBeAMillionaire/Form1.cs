@@ -44,19 +44,8 @@ namespace WhoWantsToBeAMillionaire
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBox1.Text = openFileDialog1.FileName;
-
-                //Console.WriteLine(textBox1);
                 input = System.IO.File.ReadAllLines( textBox1.Text);
-                ///input = System.IO.File.ReadAllLines(@"C:\Users\joachim\source\repos\WhoWantsToBeAMillionaire\WhoWantsToBeAMillionaire\MillFile.txt");
-            
-                //foreach (string line in input)
-               // {
-               //     Console.WriteLine(line);
-                   
-               // }
-
-
-
+               
                 Form2 frm2 = new Form2();
                 this.Hide();
                 frm2.ShowDialog();

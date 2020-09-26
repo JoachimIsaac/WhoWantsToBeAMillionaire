@@ -19,7 +19,13 @@ namespace WhoWantsToBeAMillionaire
         List<List<string>> answers = new List<List<string>>(15);
 
         public static Hashtable answer_key = new Hashtable();
-     
+
+        public List<int> positions = new List<int>();
+
+        public int Score = 0;
+        public int score_index = 0;
+        public int[] ScoreList = {100,200,300,500,1000,2000,4000,8000,16000,32000,64000,125000,250000,500000}; 
+
         public int current_level = 0;
 
 
@@ -29,7 +35,12 @@ namespace WhoWantsToBeAMillionaire
             InitializeComponent();
             
 
-                }
+        }
+
+
+
+        
+
 
 
         public void load_questions_and_answers()
@@ -62,26 +73,21 @@ namespace WhoWantsToBeAMillionaire
             for (var index = 0; index < 15; index++)
             {
                 answer_key.Add(questions[index], answers[index][0]);
-                //Console.WriteLine("test starts here");
-                //Console.WriteLine(answers[index][0]);
-                //Console.WriteLine(answers[index][1]);
-                //Console.WriteLine(answers[index][2]);
-                //Console.WriteLine(answers[index][3]);
+               
             }
 
         }
 
+
+
+
+
         public void load_buttons_and_labels(int index)
         {
-            if(index > 14)
-            {
-                player_has_lost(false);
-                return;
-            }
+          
 
             label1.Text = questions[index].ToString();
-            
-
+           
 
             button1.Text = answers[index][0];
             button2.Text = answers[index][1];
@@ -92,11 +98,11 @@ namespace WhoWantsToBeAMillionaire
         }
 
 
-        public void player_has_lost(bool outcome )
+        public void player_has_lost(bool outcome,int index,int score)
         {
             Form3 frm3 = new Form3();
             this.Hide();
-            frm3.load_game_state(outcome);
+            frm3.load_game_state(outcome,index,score);
             frm3.ShowDialog();
             
         }
@@ -117,16 +123,35 @@ namespace WhoWantsToBeAMillionaire
             Application.Exit();
         }
 
+
+        public void nextLevel() {
+            current_level += 1;
+
+            if (current_level > 14)
+            {
+                player_has_lost(false,current_level,Score);
+                return;
+            }
+            
+            Score = ScoreList[score_index];
+            score_index += 1;
+            load_buttons_and_labels(current_level);
+        }
+
+
+
+
+
+
+
         private void button1_Click(object sender, EventArgs e){
             if (button1.Text == answer_key[questions[current_level]])//continue
             {
-                current_level += 1;
-
-                load_buttons_and_labels(current_level);
+                nextLevel();
             }
-            else//you loose
+            else//you lose
             {
-                player_has_lost(true);
+                player_has_lost(true,current_level,Score);
 
             }
             
@@ -137,13 +162,11 @@ namespace WhoWantsToBeAMillionaire
         {
             if (button2.Text == answer_key[questions[current_level]])//continue
             {
-                current_level += 1;
-
-                load_buttons_and_labels(current_level);
+                nextLevel();
             }
-            else//you loose
+            else//you lose
             {
-                player_has_lost(true);
+                player_has_lost(true, current_level, Score);
 
             }
 
@@ -153,13 +176,11 @@ namespace WhoWantsToBeAMillionaire
         {
             if (button3.Text == answer_key[questions[current_level]])//continue
             {
-                current_level += 1;
-
-                load_buttons_and_labels(current_level);
+                nextLevel();
             }
-            else//you loose
+            else//you lose
             {
-                player_has_lost(true);
+                player_has_lost(true, current_level, Score);
 
             }
         }
@@ -168,14 +189,12 @@ namespace WhoWantsToBeAMillionaire
         {
             if (button4.Text == answer_key[questions[current_level]])//continue
             {
-                current_level += 1;
-
-                load_buttons_and_labels(current_level);
+                nextLevel();
             }
-            else//you loose
+            else//you lose
             {
 
-                player_has_lost(true);
+                player_has_lost(true, current_level, Score);
             }
 
         }
@@ -184,6 +203,18 @@ namespace WhoWantsToBeAMillionaire
         {
            
            
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void walkAwayOn_Click(object sender, EventArgs e)
+        {
+
+            player_has_lost(false, current_level,Score);
 
         }
     }
