@@ -75,7 +75,7 @@ namespace WhoWantsToBeAMillionaire
         {
             if(index > 14)
             {
-                player_has(false);
+                player_has_lost(false);
                 return;
             }
 
@@ -92,7 +92,7 @@ namespace WhoWantsToBeAMillionaire
         }
 
 
-        public void player_has(bool outcome )
+        public void player_has_lost(bool outcome )
         {
             Form3 frm3 = new Form3();
             this.Hide();
@@ -126,7 +126,7 @@ namespace WhoWantsToBeAMillionaire
             }
             else//you loose
             {
-                player_has(true);
+                player_has_lost(true);
 
             }
             
@@ -143,7 +143,7 @@ namespace WhoWantsToBeAMillionaire
             }
             else//you loose
             {
-                player_has(true);
+                player_has_lost(true);
 
             }
 
@@ -159,7 +159,7 @@ namespace WhoWantsToBeAMillionaire
             }
             else//you loose
             {
-                player_has(true);
+                player_has_lost(true);
 
             }
         }
@@ -175,7 +175,7 @@ namespace WhoWantsToBeAMillionaire
             else//you loose
             {
 
-                player_has(true);
+                player_has_lost(true);
             }
 
         }
