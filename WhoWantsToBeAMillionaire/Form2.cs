@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
 using System.Threading;
+using System.Security.Policy;
 
 namespace WhoWantsToBeAMillionaire
 {
@@ -23,12 +24,18 @@ namespace WhoWantsToBeAMillionaire
         public List<int> positions = new List<int>();
 
         public int Score = 0;
+
         public int score_index = 0;
+
         public int[] ScoreList = {100,200,300,500,1000,2000,4000,8000,16000,32000,64000,125000,250000,500000}; 
 
         public int current_level = 0;
 
+        public int[] question_arangements = { 0, 1, 2, 3 };
 
+        public Label previous_answer_label;
+
+        
 
         public Form2()
         {
@@ -39,8 +46,8 @@ namespace WhoWantsToBeAMillionaire
 
 
 
-        
 
+        
 
 
         public void load_questions_and_answers()
@@ -52,12 +59,12 @@ namespace WhoWantsToBeAMillionaire
             {
                 if (counter == 0)
                 {
-                    questions.Add(current_string);
+                    questions.Add(current_string.ToLower());
                     counter += 1;
                 }
                 else
                 {
-                    temp_array.Add(current_string);
+                    temp_array.Add(current_string.ToLower());
                     counter += 1;
                     if (counter == 5)
                     {
@@ -80,20 +87,30 @@ namespace WhoWantsToBeAMillionaire
 
 
 
+        public void shuffle()
+        {
+            for(int index = 1; index < question_arangements.Length; index++)
+            {
+                int temp = question_arangements[index - 1];
+                question_arangements[index - 1] = question_arangements[index];
+                question_arangements[index] = temp;
+            }
+        }
+
 
 
         public void load_buttons_and_labels(int index)
         {
           
 
-            label1.Text = questions[index].ToString();
-           
+            header_label.Text = questions[index].ToString();
 
-            button1.Text = answers[index][0];
-            button2.Text = answers[index][1];
-            button3.Text = answers[index][2];
-            button4.Text = answers[index][3];
 
+            label_option_a.Text = answers[index][question_arangements[0]];
+            label_option_b.Text = answers[index][question_arangements[1]];
+            label_option_c.Text = answers[index][question_arangements[2]];
+            label_option_d.Text = answers[index][question_arangements[3]];
+            shuffle();
 
         }
 
@@ -112,7 +129,7 @@ namespace WhoWantsToBeAMillionaire
             
             load_questions_and_answers();
 
-            label1.Text = "Welcome to who wants to win a million dollars!!!";
+            header_label.Text = "Welcome to who wants to win a million dollars!!!";
             
             load_buttons_and_labels(current_level);
 
@@ -136,68 +153,19 @@ namespace WhoWantsToBeAMillionaire
             Score = ScoreList[score_index];
             score_index += 1;
             load_buttons_and_labels(current_level);
-        }
-
-
-
-
-
-
-
-        private void button1_Click(object sender, EventArgs e){
-            if (button1.Text == answer_key[questions[current_level]])//continue
-            {
-                nextLevel();
-            }
-            else//you lose
-            {
-                player_has_lost(true,current_level,Score);
-
-            }
-            
+            textBox1.Text = "";
+            previous_answer_label.BackColor = Color.White;
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (button2.Text == answer_key[questions[current_level]])//continue
-            {
-                nextLevel();
-            }
-            else//you lose
-            {
-                player_has_lost(true, current_level, Score);
 
-            }
 
-        }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if (button3.Text == answer_key[questions[current_level]])//continue
-            {
-                nextLevel();
-            }
-            else//you lose
-            {
-                player_has_lost(true, current_level, Score);
 
-            }
-        }
+      
+       
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (button4.Text == answer_key[questions[current_level]])//continue
-            {
-                nextLevel();
-            }
-            else//you lose
-            {
-
-                player_has_lost(true, current_level, Score);
-            }
-
-        }
+        
 
         private void Form2_Shown(object sender, EventArgs e)
         {
@@ -206,10 +174,7 @@ namespace WhoWantsToBeAMillionaire
 
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void walkAwayOn_Click(object sender, EventArgs e)
         {
@@ -217,5 +182,67 @@ namespace WhoWantsToBeAMillionaire
             player_has_lost(false, current_level,Score);
 
         }
+
+
+
+        public Label highlight_label()
+        {
+            Label[] labels = { label_option_a, label_option_b, label_option_c, label_option_d };
+            Label correct_label = labels[0]; 
+            foreach(Label curr_label in labels)
+            {
+                if (curr_label.Text == answer_key[questions[current_level]].ToString())
+                {
+                    correct_label = curr_label;
+                    correct_label.BackColor = Color.IndianRed;
+                   
+                    return correct_label;
+                }
+            }
+
+            return correct_label;
+        }
+
+        public void revert_label_backcolor()
+        {
+            
+        }
+
+        //If there is no text in the textbox, button1 is not clickable.
+        //If there is something in the textbox, button1 is clickable.
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                submit_answer_button.Enabled = false;
+            }
+            else
+            {
+                submit_answer_button.Enabled = true;
+            }
+        }
+
+        private void submit_answer_button_Click(object sender, EventArgs e)
+        {  
+            if (textBox1.Text.ToLower() == answer_key[questions[current_level]].ToString())//continue
+            {
+
+                previous_answer_label = highlight_label();
+
+                header_label.Text = "You got the correct answer!";
+                
+            }
+            else//you lose
+            {
+
+                player_has_lost(true, current_level, Score);
+            }
+        }
+
+        private void next_question_Click(object sender, EventArgs e)
+        {
+            nextLevel();
+            
+    }
     }
 }

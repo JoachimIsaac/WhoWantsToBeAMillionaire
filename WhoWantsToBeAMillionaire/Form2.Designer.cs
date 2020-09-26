@@ -28,76 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.header_label = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
+            this.label_option_b = new System.Windows.Forms.Label();
+            this.label_option_c = new System.Windows.Forms.Label();
+            this.label_option_a = new System.Windows.Forms.Label();
+            this.label_option_d = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.submit_answer_button = new System.Windows.Forms.Button();
+            this.next_question = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // header_label
             // 
-            this.button1.Location = new System.Drawing.Point(50, 692);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(219, 212);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(510, 692);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(215, 198);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(500, 975);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(245, 159);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(50, 948);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(233, 183);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Coral;
-            this.label1.Location = new System.Drawing.Point(40, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1632, 497);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "label1";
-            // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(1163, 942);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(225, 195);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "50 : 50";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.header_label.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.header_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.header_label.ForeColor = System.Drawing.Color.Coral;
+            this.header_label.Location = new System.Drawing.Point(40, 29);
+            this.header_label.Name = "header_label";
+            this.header_label.Size = new System.Drawing.Size(1632, 497);
+            this.header_label.TabIndex = 4;
+            this.header_label.Text = "header_label";
             // 
             // button6
             // 
@@ -110,35 +61,107 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.walkAwayOn_Click);
             // 
+            // label_option_b
+            // 
+            this.label_option_b.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_option_b.Location = new System.Drawing.Point(569, 740);
+            this.label_option_b.Name = "label_option_b";
+            this.label_option_b.Size = new System.Drawing.Size(276, 129);
+            this.label_option_b.TabIndex = 7;
+            this.label_option_b.Text = "label_option_b";
+            // 
+            // label_option_c
+            // 
+            this.label_option_c.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_option_c.Location = new System.Drawing.Point(30, 1030);
+            this.label_option_c.Name = "label_option_c";
+            this.label_option_c.Size = new System.Drawing.Size(284, 119);
+            this.label_option_c.TabIndex = 8;
+            this.label_option_c.Text = "label_option_c";
+            // 
+            // label_option_a
+            // 
+            this.label_option_a.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_option_a.ForeColor = System.Drawing.Color.Black;
+            this.label_option_a.Location = new System.Drawing.Point(28, 740);
+            this.label_option_a.Name = "label_option_a";
+            this.label_option_a.Size = new System.Drawing.Size(397, 113);
+            this.label_option_a.TabIndex = 9;
+            this.label_option_a.Text = "label_option_a";
+            // 
+            // label_option_d
+            // 
+            this.label_option_d.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_option_d.Location = new System.Drawing.Point(569, 1008);
+            this.label_option_d.Name = "label_option_d";
+            this.label_option_d.Size = new System.Drawing.Size(308, 129);
+            this.label_option_d.TabIndex = 10;
+            this.label_option_d.Text = "label_option_d";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(1088, 584);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(584, 49);
+            this.textBox1.TabIndex = 11;
+            // 
+            // submit_answer_button
+            // 
+            this.submit_answer_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.submit_answer_button.Location = new System.Drawing.Point(1228, 658);
+            this.submit_answer_button.Name = "submit_answer_button";
+            this.submit_answer_button.Size = new System.Drawing.Size(147, 51);
+            this.submit_answer_button.TabIndex = 12;
+            this.submit_answer_button.Text = "Submit";
+            this.submit_answer_button.UseVisualStyleBackColor = true;
+            this.submit_answer_button.Click += new System.EventHandler(this.submit_answer_button_Click);
+            // 
+            // next_question
+            // 
+            this.next_question.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.next_question.Location = new System.Drawing.Point(1437, 658);
+            this.next_question.Name = "next_question";
+            this.next_question.Size = new System.Drawing.Size(144, 57);
+            this.next_question.TabIndex = 13;
+            this.next_question.Text = "Next ";
+            this.next_question.UseVisualStyleBackColor = true;
+            this.next_question.Click += new System.EventHandler(this.next_question_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1756, 1198);
+            this.Controls.Add(this.next_question);
+            this.Controls.Add(this.submit_answer_button);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label_option_d);
+            this.Controls.Add(this.label_option_a);
+            this.Controls.Add(this.label_option_c);
+            this.Controls.Add(this.label_option_b);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.header_label);
             this.Name = "Form2";
             this.Text = "Form2";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form2_FormClosed);
             this.Load += new System.EventHandler(this.Form2_Load);
             this.Shown += new System.EventHandler(this.Form2_Shown);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label header_label;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label label_option_b;
+        private System.Windows.Forms.Label label_option_c;
+        private System.Windows.Forms.Label label_option_a;
+        private System.Windows.Forms.Label label_option_d;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button submit_answer_button;
+        private System.Windows.Forms.Button next_question;
     }
 }
