@@ -45,16 +45,15 @@ namespace WhoWantsToBeAMillionaire
             {
                 textBox1.Text = openFileDialog1.FileName;
 
-                Thread.Sleep(3000);
-                Console.WriteLine(textBox1);
+                //Console.WriteLine(textBox1);
                 input = System.IO.File.ReadAllLines( textBox1.Text);
                 ///input = System.IO.File.ReadAllLines(@"C:\Users\joachim\source\repos\WhoWantsToBeAMillionaire\WhoWantsToBeAMillionaire\MillFile.txt");
             
-                foreach (string line in input)
-                {
-                    Console.WriteLine(line);
+                //foreach (string line in input)
+               // {
+               //     Console.WriteLine(line);
                    
-                }
+               // }
 
 
 

@@ -73,6 +73,12 @@ namespace WhoWantsToBeAMillionaire
 
         public void load_buttons_and_labels(int index)
         {
+            if(index > 14)
+            {
+                player_has(false);
+                return;
+            }
+
             label1.Text = questions[index].ToString();
             
 
@@ -83,6 +89,16 @@ namespace WhoWantsToBeAMillionaire
             button4.Text = answers[index][3];
 
 
+        }
+
+
+        public void player_has(bool outcome )
+        {
+            Form3 frm3 = new Form3();
+            this.Hide();
+            frm3.load_game_state(outcome);
+            frm3.ShowDialog();
+            
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -101,23 +117,66 @@ namespace WhoWantsToBeAMillionaire
             Application.Exit();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+        private void button1_Click(object sender, EventArgs e){
+            if (button1.Text == answer_key[questions[current_level]])//continue
+            {
+                current_level += 1;
+
+                load_buttons_and_labels(current_level);
+            }
+            else//you loose
+            {
+                player_has(true);
+
+            }
+            
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (button2.Text == answer_key[questions[current_level]])//continue
+            {
+                current_level += 1;
+
+                load_buttons_and_labels(current_level);
+            }
+            else//you loose
+            {
+                player_has(true);
+
+            }
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if (button3.Text == answer_key[questions[current_level]])//continue
+            {
+                current_level += 1;
 
+                load_buttons_and_labels(current_level);
+            }
+            else//you loose
+            {
+                player_has(true);
+
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (button4.Text == answer_key[questions[current_level]])//continue
+            {
+                current_level += 1;
+
+                load_buttons_and_labels(current_level);
+            }
+            else//you loose
+            {
+
+                player_has(true);
+            }
 
         }
 
