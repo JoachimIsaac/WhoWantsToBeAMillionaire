@@ -16,18 +16,22 @@ namespace WhoWantsToBeAMillionaire
     public partial class Form2 : Form
     {
         public static ArrayList questions = new ArrayList(15);
-  
-        List<List<string>> answers = new List<List<string>>(15);
 
-        public static Hashtable answer_key = new Hashtable();
+        List<List<string>> answers = new List<List<string>>(15); 
 
+        public static Hashtable answer_key = new Hashtable();// {question as a key : returns an answer}  == > {"question": "answer"]}
+
+
+        
         public List<int> positions = new List<int>();
+
+
 
         public int Score = 0;
 
         public int score_index = 0;
 
-        public int[] ScoreList = {100,200,300,500,1000,2000,4000,8000,16000,32000,64000,125000,250000,500000}; 
+        public int[] ScoreList = { 100, 200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000, 250000, 500000 };
 
         public int current_level = 0;
 
@@ -37,10 +41,15 @@ namespace WhoWantsToBeAMillionaire
 
         public bool used_fifty_fifty = false;
 
-        public bool submitted = false; 
+        public bool submitted = false;
 
 
         
+
+
+
+
+
 
         public Form2()
         {
@@ -52,11 +61,23 @@ namespace WhoWantsToBeAMillionaire
 
 
 
-        
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            textBox1_TextChanged_1(sender, e);
+
+            load_questions_and_answers();
+
+            header_label.Text = "Welcome to who wants to win a million dollars!!!";
+
+            load_buttons_and_labels(current_level);
+
+        }
 
 
         public void load_questions_and_answers()
         {
+           
             var counter = 0;
             var temp_array = new List<string>();
 
@@ -74,7 +95,7 @@ namespace WhoWantsToBeAMillionaire
                     if (counter == 5)
                     {
                         counter = 0;
-                        answers.Add(temp_array);
+                        answers.Add(temp_array);  
                         temp_array = new List<string>();
 
                     }
@@ -106,7 +127,21 @@ namespace WhoWantsToBeAMillionaire
 
         public void load_buttons_and_labels(int index)
         {
-          
+
+            Label[] labels = { score_label1, score_label2, score_label3, score_label4, score_label5, score_label6, score_label7, 
+                score_label8, score_label9, score_label10, score_label11, score_label12, score_label13, score_label14, score_label15 };
+
+
+            if (index == 0)
+            {
+                labels[index].BackColor = Color.Yellow;
+            }
+            else
+            {
+                labels[index-1].BackColor = Color.LightBlue;
+                labels[index].BackColor = Color.Yellow;
+
+            }
 
             header_label.Text = questions[index].ToString();
 
@@ -139,11 +174,7 @@ namespace WhoWantsToBeAMillionaire
 
         public void player_has_lost(bool gameOver,int index,int score)
         {
-            //Form3 frm3 = new Form3();
-            //this.Hide();
-            //frm3.load_game_state(outcome,index,score);
-            ////frm3.ShowDialog();
-
+           
             string title = "Results";
            
 
@@ -159,39 +190,21 @@ namespace WhoWantsToBeAMillionaire
                 string message = "YOU W0N A MILLION DOLLARS!!!, would you like to close the window?";
                 open_messagebox(message, title);
             }
-            else if(!gameOver && index <= 14)
+            else if(!gameOver && index <= 14)//walk away 
             {
               
                 string message = $"YOU WALK AWAY WITH {score} DOLLARS!!! , would you like to close the window?";
                 open_messagebox(message, title);
+
+                
             }
 
-            
-
-
-
-
-
-
-
-
-
+           
 
             
 
         }
 
-        private void Form2_Load(object sender, EventArgs e)
-        {
-            textBox1_TextChanged_1(sender,e);
-            
-            load_questions_and_answers();
-
-            header_label.Text = "Welcome to who wants to win a million dollars!!!";
-            
-            load_buttons_and_labels(current_level);
-
-        }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -199,23 +212,24 @@ namespace WhoWantsToBeAMillionaire
         }
 
 
-        public void nextLevel() {
+        public void nextLevel()
+        {
             current_level += 1;
 
             if (current_level > 14)
             {
-                player_has_lost(false,current_level,Score);
+                player_has_lost(false, current_level, Score);
                 return;
             }
-            
+
             Score = ScoreList[score_index];
             score_index += 1;
             load_buttons_and_labels(current_level);
             input_box.Text = "";
             previous_answer_label.BackColor = Color.CornflowerBlue;
+            
 
         }
-
 
 
 
@@ -262,10 +276,7 @@ namespace WhoWantsToBeAMillionaire
             return correct_label;
         }
 
-        public void revert_label_backcolor()
-        {
-            
-        }
+      
 
 
 
@@ -351,34 +362,6 @@ namespace WhoWantsToBeAMillionaire
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void score_label5_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
