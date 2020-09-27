@@ -59,25 +59,5 @@ namespace WhoWantsToBeAMillionaire.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Millgame {
-            get {
-                object obj = ResourceManager.GetObject("Millgame", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Screen_Shot_2020_09_26_at_9_13_40_PM {
-            get {
-                object obj = ResourceManager.GetObject("Screen Shot 2020-09-26 at 9.13.40 PM", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

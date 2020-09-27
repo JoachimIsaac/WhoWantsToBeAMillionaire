@@ -212,7 +212,7 @@ namespace WhoWantsToBeAMillionaire
             score_index += 1;
             load_buttons_and_labels(current_level);
             input_box.Text = "";
-            previous_answer_label.BackColor = Color.White;
+            previous_answer_label.BackColor = Color.CornflowerBlue;
 
         }
 
@@ -372,6 +372,11 @@ namespace WhoWantsToBeAMillionaire
         }
 
         private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void score_label5_Click(object sender, EventArgs e)
         {
 
         }
