@@ -249,6 +249,7 @@ namespace WhoWantsToBeAMillionaire
             Label correct_label = labels[0]; 
             foreach(Label curr_label in labels)
             {
+                
                 if (curr_label.Text == answer_key[questions[current_level]].ToString())
                 {
                     correct_label = curr_label;
@@ -350,6 +351,29 @@ namespace WhoWantsToBeAMillionaire
 
         }
 
-        
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
