@@ -1,4 +1,17 @@
-﻿using System;
+﻿/*
+ 
+Names: Joachim Isaac, Olanrewaju Elijah Ayedun  
+Date:09/28/2020
+
+Course: CMPS4143, Fall 2020, Dr. Stringfellow.
+
+
+Purpose: To implement a GUI of the game who wants to be a millioniare.
+
+ */
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -150,8 +163,8 @@ namespace WhoWantsToBeAMillionaire
             instructionLabel.Text = "Instructions: Do not cheat (Don't Google it) \n" +
                 "Every 5 rounds there you are not penalised for a wrong ans \n" +
                 "You can only use 50/50 once\n" +
-                "Walk away means you chickened out and would like to exit\nwith your amount\n "
-                + questions[index].ToString();
+                "Walk away means you chickened out and would like to exit\nwith your amount\n ";
+               header_label.Text =  questions[index].ToString();
 
             if (current_level + 1 == 1 || current_level + 1 == 5 || current_level + 1 == 10)
             {

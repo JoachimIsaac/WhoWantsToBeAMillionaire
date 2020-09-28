@@ -1,4 +1,16 @@
-﻿using System;
+﻿/*
+ 
+Names: Joachim Isaac, Olanrewaju Elijah Ayedun  
+Date:09/28/2020
+
+Course: CMPS4143, Fall 2020, Dr. Stringfellow.
+
+
+Purpose: To implement a GUI of the game who wants to be a millioniare.
+
+ */
+
+using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
