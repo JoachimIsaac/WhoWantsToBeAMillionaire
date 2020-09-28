@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
             this.header_label = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.walkButton = new System.Windows.Forms.Button();
             this.label_option_b = new System.Windows.Forms.Label();
             this.label_option_c = new System.Windows.Forms.Label();
             this.label_option_a = new System.Windows.Forms.Label();
@@ -39,7 +39,7 @@
             this.submit_answer_button = new System.Windows.Forms.Button();
             this.next_question = new System.Windows.Forms.Button();
             this.fifty_fifty_button = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxPrizes = new System.Windows.Forms.GroupBox();
             this.radioButton17 = new System.Windows.Forms.RadioButton();
             this.radioButton14 = new System.Windows.Forms.RadioButton();
             this.radioButton13 = new System.Windows.Forms.RadioButton();
@@ -71,8 +71,8 @@
             this.score_label2 = new System.Windows.Forms.Label();
             this.score_label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.instructionLabel = new System.Windows.Forms.Label();
+            this.groupBoxPrizes.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,27 +82,26 @@
             this.header_label.BackColor = System.Drawing.Color.LightBlue;
             this.header_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.header_label.ForeColor = System.Drawing.Color.Black;
-            this.header_label.Location = new System.Drawing.Point(152, 95);
+            this.header_label.Location = new System.Drawing.Point(151, 113);
             this.header_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.header_label.Name = "header_label";
-            this.header_label.Size = new System.Drawing.Size(428, 134);
+            this.header_label.Size = new System.Drawing.Size(428, 121);
             this.header_label.TabIndex = 4;
             this.header_label.Text = "header_label";
-            this.header_label.Click += new System.EventHandler(this.header_label_Click);
             // 
-            // button6
+            // walkButton
             // 
-            this.button6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button6.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.button6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(22, 152);
-            this.button6.Margin = new System.Windows.Forms.Padding(2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 101);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "Walk Away";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.walkAwayOn_Click);
+            this.walkButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.walkButton.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.walkButton.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.walkButton.Location = new System.Drawing.Point(22, 152);
+            this.walkButton.Margin = new System.Windows.Forms.Padding(2);
+            this.walkButton.Name = "walkButton";
+            this.walkButton.Size = new System.Drawing.Size(100, 101);
+            this.walkButton.TabIndex = 6;
+            this.walkButton.Text = "Walk Away";
+            this.walkButton.UseVisualStyleBackColor = false;
+            this.walkButton.Click += new System.EventHandler(this.walkAwayOn_Click);
             // 
             // label_option_b
             // 
@@ -115,7 +114,6 @@
             this.label_option_b.Size = new System.Drawing.Size(140, 33);
             this.label_option_b.TabIndex = 7;
             this.label_option_b.Text = "label_option_b";
-            this.label_option_b.Click += new System.EventHandler(this.label_option_b_Click);
             // 
             // label_option_c
             // 
@@ -128,7 +126,6 @@
             this.label_option_c.Size = new System.Drawing.Size(146, 30);
             this.label_option_c.TabIndex = 8;
             this.label_option_c.Text = "label_option_c";
-            this.label_option_c.Click += new System.EventHandler(this.label_option_c_Click);
             // 
             // label_option_a
             // 
@@ -142,7 +139,6 @@
             this.label_option_a.Size = new System.Drawing.Size(146, 33);
             this.label_option_a.TabIndex = 9;
             this.label_option_a.Text = "label_option_a";
-            this.label_option_a.Click += new System.EventHandler(this.label_option_a_Click);
             // 
             // label_option_d
             // 
@@ -155,16 +151,15 @@
             this.label_option_d.Size = new System.Drawing.Size(140, 31);
             this.label_option_d.TabIndex = 10;
             this.label_option_d.Text = "label_option_d";
-            this.label_option_d.Click += new System.EventHandler(this.label_option_d_Click);
             // 
             // input_box
             // 
             this.input_box.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.input_box.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.input_box.Location = new System.Drawing.Point(156, 242);
+            this.input_box.Location = new System.Drawing.Point(151, 242);
             this.input_box.Margin = new System.Windows.Forms.Padding(2);
             this.input_box.Name = "input_box";
-            this.input_box.Size = new System.Drawing.Size(432, 29);
+            this.input_box.Size = new System.Drawing.Size(428, 29);
             this.input_box.TabIndex = 11;
             this.input_box.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
@@ -210,48 +205,47 @@
             this.fifty_fifty_button.UseVisualStyleBackColor = false;
             this.fifty_fifty_button.Click += new System.EventHandler(this.fifty_fiftybutton_Click);
             // 
-            // groupBox1
+            // groupBoxPrizes
             // 
-            this.groupBox1.Controls.Add(this.radioButton17);
-            this.groupBox1.Controls.Add(this.radioButton14);
-            this.groupBox1.Controls.Add(this.radioButton13);
-            this.groupBox1.Controls.Add(this.radioButton11);
-            this.groupBox1.Controls.Add(this.radioButton9);
-            this.groupBox1.Controls.Add(this.radioButton8);
-            this.groupBox1.Controls.Add(this.radioButton7);
-            this.groupBox1.Controls.Add(this.radioButton6);
-            this.groupBox1.Controls.Add(this.radioButton5);
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Controls.Add(this.radioButton4);
-            this.groupBox1.Controls.Add(this.radioButton12);
-            this.groupBox1.Controls.Add(this.radioButton15);
-            this.groupBox1.Controls.Add(this.score_label15);
-            this.groupBox1.Controls.Add(this.score_label14);
-            this.groupBox1.Controls.Add(this.score_label13);
-            this.groupBox1.Controls.Add(this.score_label12);
-            this.groupBox1.Controls.Add(this.score_label11);
-            this.groupBox1.Controls.Add(this.score_label10);
-            this.groupBox1.Controls.Add(this.score_label9);
-            this.groupBox1.Controls.Add(this.score_label8);
-            this.groupBox1.Controls.Add(this.score_label7);
-            this.groupBox1.Controls.Add(this.score_label6);
-            this.groupBox1.Controls.Add(this.score_label5);
-            this.groupBox1.Controls.Add(this.score_label4);
-            this.groupBox1.Controls.Add(this.score_label3);
-            this.groupBox1.Controls.Add(this.score_label2);
-            this.groupBox1.Controls.Add(this.score_label1);
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(645, 14);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(130, 382);
-            this.groupBox1.TabIndex = 15;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Prize Money";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.groupBoxPrizes.Controls.Add(this.radioButton17);
+            this.groupBoxPrizes.Controls.Add(this.radioButton14);
+            this.groupBoxPrizes.Controls.Add(this.radioButton13);
+            this.groupBoxPrizes.Controls.Add(this.radioButton11);
+            this.groupBoxPrizes.Controls.Add(this.radioButton9);
+            this.groupBoxPrizes.Controls.Add(this.radioButton8);
+            this.groupBoxPrizes.Controls.Add(this.radioButton7);
+            this.groupBoxPrizes.Controls.Add(this.radioButton6);
+            this.groupBoxPrizes.Controls.Add(this.radioButton5);
+            this.groupBoxPrizes.Controls.Add(this.radioButton3);
+            this.groupBoxPrizes.Controls.Add(this.radioButton2);
+            this.groupBoxPrizes.Controls.Add(this.radioButton1);
+            this.groupBoxPrizes.Controls.Add(this.radioButton4);
+            this.groupBoxPrizes.Controls.Add(this.radioButton12);
+            this.groupBoxPrizes.Controls.Add(this.radioButton15);
+            this.groupBoxPrizes.Controls.Add(this.score_label15);
+            this.groupBoxPrizes.Controls.Add(this.score_label14);
+            this.groupBoxPrizes.Controls.Add(this.score_label13);
+            this.groupBoxPrizes.Controls.Add(this.score_label12);
+            this.groupBoxPrizes.Controls.Add(this.score_label11);
+            this.groupBoxPrizes.Controls.Add(this.score_label10);
+            this.groupBoxPrizes.Controls.Add(this.score_label9);
+            this.groupBoxPrizes.Controls.Add(this.score_label8);
+            this.groupBoxPrizes.Controls.Add(this.score_label7);
+            this.groupBoxPrizes.Controls.Add(this.score_label6);
+            this.groupBoxPrizes.Controls.Add(this.score_label5);
+            this.groupBoxPrizes.Controls.Add(this.score_label4);
+            this.groupBoxPrizes.Controls.Add(this.score_label3);
+            this.groupBoxPrizes.Controls.Add(this.score_label2);
+            this.groupBoxPrizes.Controls.Add(this.score_label1);
+            this.groupBoxPrizes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxPrizes.Location = new System.Drawing.Point(645, 14);
+            this.groupBoxPrizes.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBoxPrizes.Name = "groupBoxPrizes";
+            this.groupBoxPrizes.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBoxPrizes.Size = new System.Drawing.Size(130, 382);
+            this.groupBoxPrizes.TabIndex = 15;
+            this.groupBoxPrizes.TabStop = false;
+            this.groupBoxPrizes.Text = "Prize Money";
             // 
             // radioButton17
             // 
@@ -458,7 +452,6 @@
             this.score_label15.Size = new System.Drawing.Size(296, 18);
             this.score_label15.TabIndex = 14;
             this.score_label15.Text = "$100000000";
-            this.score_label15.Click += new System.EventHandler(this.score_label15_Click);
             // 
             // score_label14
             // 
@@ -469,7 +462,6 @@
             this.score_label14.Size = new System.Drawing.Size(302, 18);
             this.score_label14.TabIndex = 13;
             this.score_label14.Text = "$500000";
-            this.score_label14.Click += new System.EventHandler(this.score_label14_Click);
             // 
             // score_label13
             // 
@@ -481,7 +473,6 @@
             this.score_label13.Size = new System.Drawing.Size(73, 21);
             this.score_label13.TabIndex = 12;
             this.score_label13.Text = "$250000";
-            this.score_label13.Click += new System.EventHandler(this.score_label13_Click);
             // 
             // score_label12
             // 
@@ -492,7 +483,6 @@
             this.score_label12.Size = new System.Drawing.Size(302, 19);
             this.score_label12.TabIndex = 11;
             this.score_label12.Text = "$125000";
-            this.score_label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // score_label11
             // 
@@ -503,7 +493,6 @@
             this.score_label11.Size = new System.Drawing.Size(302, 21);
             this.score_label11.TabIndex = 10;
             this.score_label11.Text = "$64000";
-            this.score_label11.Click += new System.EventHandler(this.score_label11_Click);
             // 
             // score_label10
             // 
@@ -516,7 +505,6 @@
             this.score_label10.Size = new System.Drawing.Size(306, 23);
             this.score_label10.TabIndex = 9;
             this.score_label10.Text = "$32000";
-            this.score_label10.Click += new System.EventHandler(this.score_label10_Click);
             // 
             // score_label9
             // 
@@ -527,7 +515,6 @@
             this.score_label9.Size = new System.Drawing.Size(293, 18);
             this.score_label9.TabIndex = 8;
             this.score_label9.Text = "$16000";
-            this.score_label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // score_label8
             // 
@@ -538,7 +525,6 @@
             this.score_label8.Size = new System.Drawing.Size(302, 22);
             this.score_label8.TabIndex = 7;
             this.score_label8.Text = "$8000";
-            this.score_label8.Click += new System.EventHandler(this.score_label8_Click);
             // 
             // score_label7
             // 
@@ -549,7 +535,6 @@
             this.score_label7.Size = new System.Drawing.Size(302, 21);
             this.score_label7.TabIndex = 6;
             this.score_label7.Text = "$4000";
-            this.score_label7.Click += new System.EventHandler(this.score_label7_Click);
             // 
             // score_label6
             // 
@@ -560,7 +545,6 @@
             this.score_label6.Size = new System.Drawing.Size(302, 22);
             this.score_label6.TabIndex = 5;
             this.score_label6.Text = "$2000";
-            this.score_label6.Click += new System.EventHandler(this.score_label6_Click);
             // 
             // score_label5
             // 
@@ -572,7 +556,6 @@
             this.score_label5.Size = new System.Drawing.Size(302, 18);
             this.score_label5.TabIndex = 4;
             this.score_label5.Text = "$1000";
-            this.score_label5.Click += new System.EventHandler(this.score_label5_Click);
             // 
             // score_label4
             // 
@@ -583,7 +566,6 @@
             this.score_label4.Size = new System.Drawing.Size(302, 22);
             this.score_label4.TabIndex = 3;
             this.score_label4.Text = "$500";
-            this.score_label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // score_label3
             // 
@@ -594,7 +576,6 @@
             this.score_label3.Size = new System.Drawing.Size(302, 25);
             this.score_label3.TabIndex = 2;
             this.score_label3.Text = "$300";
-            this.score_label3.Click += new System.EventHandler(this.score_label3_Click);
             // 
             // score_label2
             // 
@@ -605,7 +586,6 @@
             this.score_label2.Size = new System.Drawing.Size(302, 20);
             this.score_label2.TabIndex = 1;
             this.score_label2.Text = "$200";
-            this.score_label2.Click += new System.EventHandler(this.score_label2_Click);
             // 
             // score_label1
             // 
@@ -617,15 +597,14 @@
             this.score_label1.Size = new System.Drawing.Size(302, 22);
             this.score_label1.TabIndex = 0;
             this.score_label1.Text = "$100";
-            this.score_label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBox2.BackgroundImage")));
             this.groupBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Controls.Add(this.groupBox1);
+            this.groupBox2.Controls.Add(this.instructionLabel);
+            this.groupBox2.Controls.Add(this.walkButton);
+            this.groupBox2.Controls.Add(this.groupBoxPrizes);
             this.groupBox2.Controls.Add(this.fifty_fifty_button);
             this.groupBox2.Controls.Add(this.input_box);
             this.groupBox2.Controls.Add(this.submit_answer_button);
@@ -643,16 +622,15 @@
             this.groupBox2.Size = new System.Drawing.Size(800, 455);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
-            // label1
+            // instructionLabel
             // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(152, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(428, 69);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "label1";
+            this.instructionLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.instructionLabel.Location = new System.Drawing.Point(152, 24);
+            this.instructionLabel.Name = "instructionLabel";
+            this.instructionLabel.Size = new System.Drawing.Size(428, 78);
+            this.instructionLabel.TabIndex = 16;
+            this.instructionLabel.Text = "label1";
             // 
             // Game
             // 
@@ -670,9 +648,8 @@
             this.Text = "Form2";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form2_FormClosed);
             this.Load += new System.EventHandler(this.Form2_Load);
-            this.Shown += new System.EventHandler(this.Form2_Shown);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxPrizes.ResumeLayout(false);
+            this.groupBoxPrizes.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -681,7 +658,7 @@
 
         #endregion
         private System.Windows.Forms.Label header_label;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button walkButton;
         private System.Windows.Forms.Label label_option_b;
         private System.Windows.Forms.Label label_option_c;
         private System.Windows.Forms.Label label_option_a;
@@ -690,7 +667,7 @@
         private System.Windows.Forms.Button submit_answer_button;
         private System.Windows.Forms.Button next_question;
         private System.Windows.Forms.Button fifty_fifty_button;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxPrizes;
         private System.Windows.Forms.Label score_label15;
         private System.Windows.Forms.Label score_label14;
         private System.Windows.Forms.Label score_label13;
@@ -722,6 +699,6 @@
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton12;
         private System.Windows.Forms.Label score_label7;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label instructionLabel;
     }
 }
