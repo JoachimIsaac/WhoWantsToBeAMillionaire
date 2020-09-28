@@ -2,7 +2,7 @@ How many seconds are in a minute?
 60
 30
 1
-3000
+300
 Which city contains the Eiffel Tower?
 Paris
 Rome
