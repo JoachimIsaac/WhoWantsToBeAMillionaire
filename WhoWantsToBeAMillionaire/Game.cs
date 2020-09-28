@@ -13,19 +13,15 @@ using System.Security.Policy;
 
 namespace WhoWantsToBeAMillionaire
 {
-    public partial class Form2 : Form
+    public partial class Game : Form
     {
         public static ArrayList questions = new ArrayList(15);
 
-        List<List<string>> answers = new List<List<string>>(15); 
+        List<List<string>> answers = new List<List<string>>(15);
 
-        public static Hashtable answer_key = new Hashtable();// {question as a key : returns an answer}  == > {"question": "answer"]}
+        public static Hashtable answer_key = new Hashtable();
 
-
-        
         public List<int> positions = new List<int>();
-
-
 
         public int Score = 0;
 
@@ -44,17 +40,12 @@ namespace WhoWantsToBeAMillionaire
         public bool submitted = false;
 
 
-        
 
 
-
-
-
-
-        public Form2()
+        public Game()
         {
             InitializeComponent();
-            
+
 
         }
 
@@ -62,26 +53,14 @@ namespace WhoWantsToBeAMillionaire
 
 
 
-        private void Form2_Load(object sender, EventArgs e)
-        {
-            textBox1_TextChanged_1(sender, e);
-
-            load_questions_and_answers();
-
-            header_label.Text = "Welcome to who wants to win a million dollars!!!";
-
-            load_buttons_and_labels(current_level);
-
-        }
 
 
         public void load_questions_and_answers()
         {
-           
             var counter = 0;
             var temp_array = new List<string>();
 
-            foreach (string current_string in Form1.input)
+            foreach (string current_string in Infile.input)
             {
                 if (counter == 0)
                 {
@@ -95,7 +74,7 @@ namespace WhoWantsToBeAMillionaire
                     if (counter == 5)
                     {
                         counter = 0;
-                        answers.Add(temp_array);  
+                        answers.Add(temp_array);
                         temp_array = new List<string>();
 
                     }
@@ -106,7 +85,7 @@ namespace WhoWantsToBeAMillionaire
             for (var index = 0; index < 15; index++)
             {
                 answer_key.Add(questions[index], answers[index][0]);
-               
+
             }
 
         }
@@ -115,7 +94,7 @@ namespace WhoWantsToBeAMillionaire
 
         public void shuffle()
         {
-            for(int index = 1; index < question_arangements.Length; index++)
+            for (int index = 1; index < question_arangements.Length; index++)
             {
                 int temp = question_arangements[index - 1];
                 question_arangements[index - 1] = question_arangements[index];
@@ -128,7 +107,7 @@ namespace WhoWantsToBeAMillionaire
         public void load_buttons_and_labels(int index)
         {
 
-            Label[] labels = { score_label1, score_label2, score_label3, score_label4, score_label5, score_label6, score_label7, 
+            Label[] labels = { score_label1, score_label2, score_label3, score_label4, score_label5, score_label6, score_label7,
                 score_label8, score_label9, score_label10, score_label11, score_label12, score_label13, score_label14, score_label15 };
 
 
@@ -138,16 +117,18 @@ namespace WhoWantsToBeAMillionaire
             }
             else
             {
-                labels[index-1].BackColor = Color.LightBlue;
+                labels[index - 1].BackColor = Color.LightBlue;
                 labels[index].BackColor = Color.Yellow;
 
             }
+
+
 
             header_label.Text = questions[index].ToString();
 
             if (current_level + 1 == 1 || current_level + 1 == 5 || current_level + 1 == 10)
             {
-                header_label.Text += "\n This is a safe Heaven this round!";
+                header_label.Text += "\n\n\n\n\n\n\n This is a safe haven  round!";
             }
 
             label_option_a.Text = answers[index][question_arangements[0]];
@@ -160,51 +141,74 @@ namespace WhoWantsToBeAMillionaire
 
 
 
-        public void open_messagebox(string message,string title)
+        public void open_messagebox(string message, string title)
         {
-            MessageBoxButtons buttons = MessageBoxButtons.AbortRetryIgnore;
-           if(MessageBox.Show(message, title, MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes){
+            // MessageBoxButtons buttons = MessageBoxButtons.AbortRetryIgnore;
+            if (MessageBox.Show(message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
                 Application.Exit();
             }
-           
 
-            
+
+
         }
 
 
-        public void player_has_lost(bool gameOver,int index,int score)
+        public void player_has_lost(bool gameOver, int index, int score)
         {
-           
+            //Form3 frm3 = new Form3();
+            //this.Hide();
+            //frm3.load_game_state(outcome,index,score);
+            ////frm3.ShowDialog();
+
             string title = "Results";
-           
+
 
 
             if (gameOver)
             {
-                string message = "YOU LOSE!!!!!! Please play again!";
+                string message = "YOU LOST!!!!!! Would you like to try again?";
 
                 open_messagebox(message, title);
             }
-            else if(!gameOver && index > 14)
+            else if (!gameOver && index > 14)
             {
                 string message = "YOU W0N A MILLION DOLLARS!!!, would you like to close the window?";
                 open_messagebox(message, title);
             }
-            else if(!gameOver && index <= 14)//walk away 
+            else if (!gameOver && index <= 14)
             {
-              
+
                 string message = $"YOU WALK AWAY WITH {score} DOLLARS!!! , would you like to close the window?";
                 open_messagebox(message, title);
-
-                
             }
 
-           
 
-            
+
+
+
+
+
+
+
+
+
+
+
 
         }
 
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            textBox1_TextChanged_1(sender, e);
+
+            load_questions_and_answers();
+
+            header_label.Text = "Welcome to who wants to be a millionaire!!!";
+
+            load_buttons_and_labels(current_level);
+
+        }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -227,31 +231,31 @@ namespace WhoWantsToBeAMillionaire
             load_buttons_and_labels(current_level);
             input_box.Text = "";
             previous_answer_label.BackColor = Color.CornflowerBlue;
-            
 
         }
 
 
 
 
-      
-       
 
-        
+
+
+
+
 
         private void Form2_Shown(object sender, EventArgs e)
         {
-           
-           
+
+
 
         }
 
-        
+
 
         private void walkAwayOn_Click(object sender, EventArgs e)
         {
 
-            player_has_lost(false, current_level,Score);
+            player_has_lost(false, current_level, Score);
 
         }
 
@@ -260,15 +264,15 @@ namespace WhoWantsToBeAMillionaire
         public Label highlight_label()
         {
             Label[] labels = { label_option_a, label_option_b, label_option_c, label_option_d };
-            Label correct_label = labels[0]; 
-            foreach(Label curr_label in labels)
+            Label correct_label = labels[0];
+            foreach (Label curr_label in labels)
             {
-                
+
                 if (curr_label.Text == answer_key[questions[current_level]].ToString())
                 {
                     correct_label = curr_label;
                     correct_label.BackColor = Color.IndianRed;
-                   
+
                     return correct_label;
                 }
             }
@@ -276,23 +280,26 @@ namespace WhoWantsToBeAMillionaire
             return correct_label;
         }
 
-      
+        public void revert_label_backcolor()
+        {
+
+        }
 
 
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
-            submit_answer_button.Enabled = input_box.Text == "" ? false : true;
+            submit_answer_button.Enabled = input_box.Text == "" ? false : true; // Uses ternary operator 
 
-           
+
         }
 
         //If there is no text in the textbox, button1 is not clickable.
         //If there is something in the textbox, button1 is clickable.
-     
+
 
         private void submit_answer_button_Click(object sender, EventArgs e)
-        {  
+        {
             if (input_box.Text.ToLower() == answer_key[questions[current_level]].ToString())//continue
             {
 
@@ -301,9 +308,9 @@ namespace WhoWantsToBeAMillionaire
                 header_label.Text = "You got the correct answer!";
 
                 submitted = true;
-                
+
             }
-           else if (current_level + 1 == 1 || current_level + 1 == 5 || current_level + 1 == 10)
+            else if (current_level + 1 == 1 || current_level + 1 == 5 || current_level + 1 == 10)
             {
                 previous_answer_label = highlight_label();
                 header_label.Text = "You survived due to your safe heaven!!!!";
@@ -328,8 +335,8 @@ namespace WhoWantsToBeAMillionaire
                 nextLevel();
                 submitted = false;
             }
-            
-    }
+
+        }
 
         private void fifty_fiftybutton_Click(object sender, EventArgs e)
         {
@@ -342,26 +349,23 @@ namespace WhoWantsToBeAMillionaire
                 int counter = 0;
 
 
-                foreach(Label current_label in labels)
+                foreach (Label current_label in labels)
                 {
-                    if(current_label.Text != answer_key[questions[current_level]].ToString())
+                    if (current_label.Text != answer_key[questions[current_level]].ToString())
                     {
-                        
+
 
                         counter += 1;
                         current_label.Text = "######";
                         used_fifty_fifty = true;
                         fifty_fifty_button.Text = "";
                         if (counter == 2) return;
-                        
+
                     }
                 }
-                
+
             }
-           
 
         }
-
-
     }
-}
+        }

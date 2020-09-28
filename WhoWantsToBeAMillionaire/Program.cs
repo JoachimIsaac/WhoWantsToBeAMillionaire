@@ -21,7 +21,7 @@ namespace WhoWantsToBeAMillionaire
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Form1 f = new Form1();
+            Infile f = new Infile();
             Application.Run(f);
 
 

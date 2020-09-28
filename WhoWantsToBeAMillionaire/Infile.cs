@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace WhoWantsToBeAMillionaire
 {
-    public partial class Form1 : Form
+    public partial class Infile : Form
     {
-        public Form1()
+        public Infile()
         {
             InitializeComponent();
         }
@@ -44,29 +44,12 @@ namespace WhoWantsToBeAMillionaire
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBox1.Text = openFileDialog1.FileName;
-                input = System.IO.File.ReadAllLines( textBox1.Text);
-               
-                Form2 frm2 = new Form2();
+                input = System.IO.File.ReadAllLines(textBox1.Text);
+
+                Game frm2 = new Game();
                 this.Hide();
                 frm2.ShowDialog();
             }
-        }
-
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-           
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
