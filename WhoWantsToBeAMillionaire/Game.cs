@@ -110,7 +110,14 @@ namespace WhoWantsToBeAMillionaire
             Label[] labels = { score_label1, score_label2, score_label3, score_label4, score_label5, score_label6, score_label7,
                 score_label8, score_label9, score_label10, score_label11, score_label12, score_label13, score_label14, score_label15 };
 
+            if (index == 0){
+            
+            foreach (Label lab in labels) {
 
+                    lab.BackColor = Color.LightBlue;
+            
+            }
+            }
             if (index == 0)
             {
                 labels[index].BackColor = Color.Yellow;
@@ -121,8 +128,10 @@ namespace WhoWantsToBeAMillionaire
                 labels[index].BackColor = Color.Yellow;
 
             }
-
-
+              if ( input_box.Text != "")
+                  { input_box.Text = " "  ;}
+         
+           
 
             header_label.Text = questions[index].ToString();
 
@@ -137,6 +146,7 @@ namespace WhoWantsToBeAMillionaire
             label_option_d.Text = answers[index][question_arangements[3]];
             shuffle();
 
+
         }
 
 
@@ -144,9 +154,12 @@ namespace WhoWantsToBeAMillionaire
         public void open_messagebox(string message,string title)
         {
            // MessageBoxButtons buttons = MessageBoxButtons.AbortRetryIgnore;
-           if(MessageBox.Show(message, title, MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.No){
-                Application.Exit();
+           if(MessageBox.Show(message, title, MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes){
+                current_level = 0;
+                load_buttons_and_labels(current_level);
             }
+
+           else   Application.Exit();
            
 
             
@@ -166,7 +179,7 @@ namespace WhoWantsToBeAMillionaire
 
             if (gameOver)
             {
-                string message = "YOU LOST!!!!!! Would you like to try again?";
+                string message = "YOU LOST!! Start a new game?";
 
                 open_messagebox(message, title);
             }
