@@ -73,7 +73,7 @@
             this.Controls.Add(this.fimdFbutton);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Infile";
-            this.Text = "Form1";
+            this.Text = "WWTBM";
             this.ResumeLayout(false);
             this.PerformLayout();
 
