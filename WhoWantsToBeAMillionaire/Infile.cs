@@ -44,12 +44,34 @@ namespace WhoWantsToBeAMillionaire
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBox1.Text = openFileDialog1.FileName;
-                input = System.IO.File.ReadAllLines(textBox1.Text);
-
+                input = System.IO.File.ReadAllLines( textBox1.Text);
+               
                 Game frm2 = new Game();
                 this.Hide();
                 frm2.ShowDialog();
             }
+        }
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+           
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
