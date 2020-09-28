@@ -10,13 +10,16 @@ using System.Windows.Forms;
 using System.Collections;
 using System.Threading;
 using System.Security.Policy;
+using System.Media;
+using System.Threading;
+
 
 namespace WhoWantsToBeAMillionaire
 {
     public partial class Game : Form
     {
         public static ArrayList questions = new ArrayList(15);
-  
+
         List<List<string>> answers = new List<List<string>>(15);
 
         public static Hashtable answer_key = new Hashtable();
@@ -27,7 +30,7 @@ namespace WhoWantsToBeAMillionaire
 
         public int score_index = 0;
 
-        public int[] ScoreList = {100,200,300,500,1000,2000,4000,8000,16000,32000,64000,125000,250000,500000}; 
+        public int[] ScoreList = { 100, 200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000, 250000, 500000 };
 
         public int current_level = 0;
 
@@ -37,22 +40,29 @@ namespace WhoWantsToBeAMillionaire
 
         public bool used_fifty_fifty = false;
 
-        public bool submitted = false; 
-
+        public bool submitted = false;
 
         
+    
+
+
+
+
 
         public Game()
         {
             InitializeComponent();
-            
 
+            
         }
 
 
 
 
+
         
+       
+
 
 
         public void load_questions_and_answers()
@@ -85,13 +95,15 @@ namespace WhoWantsToBeAMillionaire
             for (var index = 0; index < 15; index++)
             {
                 answer_key.Add(questions[index], answers[index][0]);
-               
+
             }
 
+
+
+         
+
+
         }
-
-      
-
         public void shuffle()
         {
             for(int index = 1; index < question_arangements.Length; index++)
@@ -102,7 +114,7 @@ namespace WhoWantsToBeAMillionaire
             }
         }
 
-
+       
 
         public void load_buttons_and_labels(int index)
         {
@@ -130,10 +142,14 @@ namespace WhoWantsToBeAMillionaire
             }
               if ( input_box.Text != "")
                   { input_box.Text = " "  ;}
-         
-           
 
-            header_label.Text = questions[index].ToString();
+
+
+            label1.Text = "Instructions: Do not cheat (Don't Google it) \n " +
+                "Every 5 rounds there you are not penalised for a wrong ans \n" +
+                "You can only use 50/50 once \n" +
+                "Walk away means you chickened out and would like to exit with your current amount\n\n "
+                + questions[index].ToString();
 
             if (current_level + 1 == 1 || current_level + 1 == 5 || current_level + 1 == 10)
             {
@@ -147,9 +163,18 @@ namespace WhoWantsToBeAMillionaire
             shuffle();
 
 
+            
+
+
+
         }
 
 
+        
+
+
+
+       
 
         public void open_messagebox(string message,string title)
         {
@@ -166,36 +191,61 @@ namespace WhoWantsToBeAMillionaire
         }
 
 
-        public void player_has_lost(bool gameOver,int index,int score)
+        public void player_has_lost(bool gameOver, int index, int score)
         {
-            //Form3 frm3 = new Form3();
-            //this.Hide();
-            //frm3.load_game_state(outcome,index,score);
-            ////frm3.ShowDialog();
+
 
             string title = "Results";
-           
+
 
 
             if (gameOver)
             {
                 string message = "YOU LOST!! Start a new game?";
 
+                SystemSounds.Exclamation.Play();
+
                 open_messagebox(message, title);
+
+
             }
-            else if(!gameOver && index > 14)
+            else if (!gameOver && index > 14)
             {
+
+
+                int frequency = 5000;
+
+                for (int i = 1; i <= 3; i++)
+                {
+                    Console.Beep(frequency + i, 400);
+                    Thread.Sleep(100);
+                }
+
                 string message = "YOU W0N A MILLION DOLLARS!!!, would you like to close the window?";
                 open_messagebox(message, title);
+
+
+
+
+
             }
-            else if(!gameOver && index <= 14)
+            else if (!gameOver && index <= 14)
+
             {
-              
+
+                int frequency = 5000;
+                for (int i = 1; i <= 5; i++)
+                {
+                    Console.Beep(frequency + i, 400);
+
+                }
                 string message = $"YOU WALK AWAY WITH {score} DOLLARS!!! , would you like to close the window?";
                 open_messagebox(message, title);
+
+
+
             }
 
-            
 
 
 
@@ -206,9 +256,11 @@ namespace WhoWantsToBeAMillionaire
 
 
 
-            
+
+
 
         }
+
 
         private void Form2_Load(object sender, EventArgs e)
         {
@@ -219,6 +271,9 @@ namespace WhoWantsToBeAMillionaire
             header_label.Text = "Welcome to who wants to be a millionaire!!!";
             
             load_buttons_and_labels(current_level);
+
+           
+
 
         }
 
@@ -317,7 +372,7 @@ namespace WhoWantsToBeAMillionaire
                 previous_answer_label = highlight_label();
 
                 header_label.Text = "You got the correct answer!";
-
+                Console.Beep(3000, 200);
                 submitted = true;
                 
             }
@@ -349,8 +404,11 @@ namespace WhoWantsToBeAMillionaire
             
     }
 
-        private void fifty_fiftybutton_Click(object sender, EventArgs e)
+       
+
+            private void fifty_fiftybutton_Click(object sender, EventArgs e)
         {
+
             // we need to reduce the number of answers by half
             if (!used_fifty_fifty)
             {
@@ -364,8 +422,9 @@ namespace WhoWantsToBeAMillionaire
                 {
                     if(current_label.Text != answer_key[questions[current_level]].ToString())
                     {
-                        
 
+                        int frequency = 5000;
+                        Console.Beep(frequency + current_label.Text.Length, 400);
                         counter += 1;
                         current_label.Text = "######";
                         used_fifty_fifty = true;
@@ -380,7 +439,10 @@ namespace WhoWantsToBeAMillionaire
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        
+
+
+private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
@@ -476,6 +538,11 @@ namespace WhoWantsToBeAMillionaire
         }
 
         private void score_label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
