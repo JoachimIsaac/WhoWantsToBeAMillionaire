@@ -198,6 +198,8 @@ namespace WhoWantsToBeAMillionaire
             {
                 current_level = 0;
                 load_buttons_and_labels(current_level);
+                used_fifty_fifty = false;
+                fifty_fifty_button.Text = "50:50";
             }
 
             else Application.Exit();
