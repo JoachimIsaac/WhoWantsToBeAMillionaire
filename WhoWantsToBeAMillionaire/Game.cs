@@ -31,10 +31,13 @@ namespace WhoWantsToBeAMillionaire
 {
     public partial class Game : Form
     {
+        //Array that holds the answers for the user to read. 
         public static ArrayList questions = new ArrayList(15);
 
+        // List of list that holds the 4 possible answer within a sub list 
         List<List<string>> answers = new List<List<string>>(15);
 
+        //Hash table that holds a question answer pair , the question and the correct answer. 
         public static Hashtable answer_key = new Hashtable();
 
         public List<int> positions = new List<int>();
